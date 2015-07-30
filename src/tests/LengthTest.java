@@ -15,20 +15,16 @@ public class LengthTest {
 
     @Test
     public void checkComparisonBetweenMetreAndCentimetre() {
-        Metres metres = new Metres(3);
-        Centimetres centimetres = new Centimetres(300);
 
-        assertTrue(metres.equals(centimetres));
+        assertTrue(new Metres(3).equals(new Centimetres(300)));
     }
 
     @Test
     public void checkConversionFromCentimetreToFeet() {
-        Feet feet = new Feet(3);
-        double inches = Inch.convert(feet);
-        Inch inch = new Inch(inches);
+        double inches = Inch.convert(new Feet(3));
 
         assertEquals(36,inches,0.00001);
-        assertTrue(inch.equals(feet));
+        assertTrue(new Inch(inches).equals(new Feet(3)));
     }
 
 }
