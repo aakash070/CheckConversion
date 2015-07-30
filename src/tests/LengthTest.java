@@ -1,9 +1,9 @@
 package tests;
 
-import domain.Centimetres;
-import domain.Feet;
-import domain.Inch;
-import domain.Metres;
+import domain.length.Centimetres;
+import domain.length.Feet;
+import domain.length.Inch;
+import domain.length.Metres;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
