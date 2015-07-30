@@ -5,10 +5,10 @@ package domain.length;
  */
 public class Metres extends Length{
 
-  final double converSionFactor = 100;
+    private static double conversionFactor = 100;
 
     public Metres(double length) {
-        super(100*length);
+        super(length);
     }
 
     @Override
@@ -17,11 +17,15 @@ public class Metres extends Length{
     }
 
     @Override
-    public double getLengthValue() {
-        return super.getLength();
+    public double getConversionFactor() {
+        return conversionFactor;
     }
 
     public static double convert(Length l) {
-        return l.getLengthValue()/100;
+        return l.getLength()/conversionFactor;
+    }
+
+    public Metres add(Length length) {
+        return new Metres((this.getLength()+length.getLength())/conversionFactor);
     }
 }

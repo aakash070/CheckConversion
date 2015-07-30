@@ -5,17 +5,22 @@ package domain.volume;
  */
 public class TeaSpoon extends Volume{
 
+    private static double conversionFactor = 1;
+
     public TeaSpoon(double volume) {
         super(volume);
     }
 
     @Override
-    public double getVolumeValue() {
-        return super.getVolume();
+    public double getConversionFactor() {
+        return conversionFactor;
     }
 
     public static double convert(Volume volume) {
-        return volume.getVolumeValue();
+        return volume.getVolume()/conversionFactor;
     }
 
+    public TeaSpoon add(Volume volume) {
+        return new TeaSpoon((this.getVolume()+volume.getVolume())/conversionFactor);
+    }
 }

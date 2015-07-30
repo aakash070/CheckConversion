@@ -5,16 +5,22 @@ package domain.volume;
  */
 public class TableSpoon extends Volume{
 
+    private static double conversionFactor = 3;
+
     public TableSpoon(double volume) {
-        super(volume*3);
+        super(volume);
     }
 
     @Override
-    public double getVolumeValue() {
-        return super.getVolume();
+    public double getConversionFactor() {
+        return conversionFactor;
     }
 
     public static double convert(Volume volume) {
-        return volume.getVolumeValue()/3;
+        return volume.getVolume()/conversionFactor;
+    }
+
+    public TableSpoon add(Volume volume) {
+        return new TableSpoon((this.getVolume()+volume.getVolume())/conversionFactor);
     }
 }

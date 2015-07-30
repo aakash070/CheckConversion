@@ -5,10 +5,10 @@ package domain.length;
  */
 public class Centimetres extends Length{
 
-    final double conversionFactor = 1;
+    private static double conversionFactor = 1;
 
     public Centimetres(double length) {
-        super(1*length);
+        super(length);
     }
 
     @Override
@@ -17,11 +17,15 @@ public class Centimetres extends Length{
     }
 
     @Override
-    public double getLengthValue() {
-        return super.getLength();
+    public double getConversionFactor() {
+        return conversionFactor;
     }
 
-     public static double convert(Length l) {
-        return l.getLengthValue();
+    public static double convert(Length length) {
+        return length.getLength()/conversionFactor;
+    }
+
+    public Centimetres add(Length length) {
+        return new Centimetres((this.getLength()+length.getLength())/conversionFactor);
     }
 }

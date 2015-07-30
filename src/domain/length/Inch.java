@@ -5,8 +5,10 @@ package domain.length;
  */
 public class Inch extends Length{
 
+    private static double conversionFactor = 2.54;
+
     public Inch(double length) {
-        super(length*2.54);
+        super(length);
     }
 
     @Override
@@ -15,12 +17,15 @@ public class Inch extends Length{
     }
 
     @Override
-    public double getLengthValue() {
-        return super.getLength();
+    public double getConversionFactor() {
+        return conversionFactor;
     }
 
-
     public static double convert(Length l) {
-        return l.getLengthValue()/2.54;
+        return l.getLength()/conversionFactor;
+    }
+
+    public Inch add(Length length) {
+        return new Inch((this.getLength()+length.getLength())/conversionFactor);
     }
 }

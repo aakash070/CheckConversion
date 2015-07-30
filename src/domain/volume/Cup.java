@@ -5,16 +5,22 @@ package domain.volume;
  */
 public class Cup extends Volume{
 
+    private static double conversionFactor = 48;
+
     public Cup(double volume) {
-        super(volume*48);
+        super(volume);
     }
 
-    @Override
-    public double getVolumeValue() {
-        return super.getVolume();
+   @Override
+    public double getConversionFactor() {
+        return conversionFactor;
     }
 
     public static double convert(Volume volume) {
-        return volume.getVolumeValue()/48;
+        return volume.getVolume()/conversionFactor;
+    }
+
+    public Cup add(Volume volume) {
+        return new Cup((this.getVolume()+volume.getVolume())/conversionFactor);
     }
 }

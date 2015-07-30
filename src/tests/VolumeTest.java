@@ -21,12 +21,8 @@ public class VolumeTest {
 
     @Test
     public void checkConversionFromOunceToTeaspoon() {
-        Ounce onz = new Ounce(2);
-        double tsp = TeaSpoon.convert(onz);
-
-        TeaSpoon teaSpoon = new TeaSpoon(tsp);
-
+        double tsp = TeaSpoon.convert(new Ounce(2));
         assertEquals(12,tsp,0.00001);
-        assertTrue(teaSpoon.equals(onz));
+        assertTrue(new TeaSpoon(tsp).equals(new Ounce(2)));
     }
 }

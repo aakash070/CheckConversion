@@ -5,16 +5,22 @@ package domain.volume;
  */
 public class Ounce extends Volume{
 
+    private static double conversionFactor = 6;
+
     public Ounce(double volume) {
-        super(volume*6);
+        super(volume);
     }
 
     @Override
-    public double getVolumeValue() {
-        return super.getVolume();
+    public double getConversionFactor() {
+        return conversionFactor;
     }
 
     public static double convert(Volume volume) {
-        return volume.getVolumeValue()/6;
+        return volume.getVolume()/conversionFactor;
+    }
+
+    public Ounce add(Volume volume) {
+        return new Ounce((this.getVolume()+volume.getVolume())/conversionFactor);
     }
 }

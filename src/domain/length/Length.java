@@ -10,27 +10,22 @@ public abstract class Length {
     private double length;
 
     public Length(double length) {
-        this.length = length;
+        this.length = length*this.getConversionFactor();
     }
 
     public double getLength() {
         return length;
     }
 
-    //   public abstract double convertToBase(double l);
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
         if(!(o instanceof Length))
             return false;
         Length length1 = (Length) o;
 
         return Double.compare(length1.length, length) == 0;
-
     }
 
-   public abstract double getLengthValue();
+   public abstract double getConversionFactor();
 }
